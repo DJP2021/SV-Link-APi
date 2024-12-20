@@ -17,10 +17,9 @@ supabase: Client = create_client(url, key,
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/status")
 async def root():
-    response = supabase.table("users").select("*").execute()
-    return {"message": response}
+    return {"status": 1, "message": "Dieser Service ist aktuell aktiv."}
 
 
 @app.get("/hello/{name}")
